@@ -5,6 +5,11 @@ import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Books from './containers/Books/Books';
 
+const Test = () => (
+    <div>
+        Test
+    </div>
+);
 class Routes extends Component {
   render() {
     return (
@@ -12,6 +17,7 @@ class Routes extends Component {
         <Navbar />
             <Switch>
                 <Route exact path='/' component={ Books }/>
+                <Route exact path='/test' component={ Test }/>
             </Switch>
         <Footer />
       </div>
