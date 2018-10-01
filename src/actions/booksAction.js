@@ -1,7 +1,7 @@
 import { FETCH_BOOKS } from './types';
 
 export const fetchBooks = () => dispatch => {
-    fetch('http://localhost:5000/')
+    fetch('http://api.eversbible.com/')
         .then(function(response) {
             return response.json();
         })
