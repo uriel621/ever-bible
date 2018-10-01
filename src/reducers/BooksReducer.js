@@ -6,10 +6,13 @@ const initialState = {
 
 export default function(state = initialState, action){
     if(action.type === FETCH_BOOKS){
-        return {
-            ...state,
-            "books": action.payload
-        };
+        if(action.type === FETCH_BOOKS){
+            return action.payload;
+        }
+        // return {
+        //     ...state,
+        //     "books": action.payload
+        // };
     }
     else {
         return state;

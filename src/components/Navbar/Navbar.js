@@ -11,7 +11,7 @@ const Navbar = () => (
         <Container>
             <Menu.Item as='a' header>
             <Image size='mini' src='./images/logo.png' style={{ marginRight: '1.5em' }} />
-            Project Name
+            Evers Bible
             </Menu.Item>
             <Menu.Item as='a'>Home</Menu.Item>
 
