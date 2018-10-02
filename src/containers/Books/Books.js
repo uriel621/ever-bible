@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {fetchBooks} from '../../actions/index';
-
+// import styles from './books.css';
+import './books.css';
 import {
     Card,
     Container,
@@ -44,21 +45,11 @@ class Books extends Component {
                 {this.props.books.length &&
                     <Card.Group itemsPerRow={3}>
                         {this.props.books.map(book => {
-                            // console.log('@CHARACTERS of '+book.book, book.book.length);
-                            let fontSize = '100%';
-                            // console.log('@CHARACTERS of '+book.book, book.book.includes(' '))
-                            if(book.book.length > 10 || book.book.includes(' ')) {
-                                fontSize = '69%';
-                            }
-                            else if(book.book.length >= 8) {
-                                fontSize = '80%';
-                            }
-
                             return (
                                 <Card key={book.id} onClick={() => this.bookHandler(book.book)}>
                                     <Image src={book.location} />
-                                    <Card.Content>
-                                        <span style={{'fontSize':fontSize}}>{book.book}</span>
+                                    <Card.Content className='nameOverflow'>
+                                        <span /* style={{'fontSize':fontSize}} */>{book.book}</span>
                                     </Card.Content>
                                 </Card>
                             )
