@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {fetchBooks} from '../../actions/index';
-// import styles from './books.css';
+import {fetchBooks, activeBook} from '../../actions/index';
 import './books.css';
 import {
     Card,
@@ -14,73 +13,44 @@ import {
 class Books extends Component {
     constructor(props) {
         super(props);
-        // this.bookHandler = this.bookHandler.bind(this);
+        this.bookHandler = this.bookHandler.bind(this);
     }
     componentDidMount() {
         this.props.fetchBooks();
     }
 
-    bookHandler(event) {
+    bookHandler(book) {
         // make action creator for active book
-        // mske react routers 
-        console.log(event)
+        // mske react routers
+        console.log(book)
+        this.props.activeBook(book)
     }
     
     render(){
-        console.log('@BOOKS', this.props.books);
+        console.log('@BOOKS', this.props.statusBooks);
         return (
             <Container text style={{ marginTop: '7em' }}>
-                {/* <Header as='h1'>Semantic UI React Fixed Template</Header>
-                <p>This is a basic fixed menu template using fixed size containers.</p>
-                <p>
-                    A text container is used for the main container, which is useful for single column layouts.
-                </p>
-                <Image src='./images/media-paragraph.png' style={{ marginTop: '2em' }} />
-                <Image src='./images/paragraph.png' style={{ marginTop: '2em' }} />
-                <Image src='./images/paragraph.png' style={{ marginTop: '2em' }} />
-                <Image src='./images/paragraph.png' style={{ marginTop: '2em' }} />
-                <Image src='./images/paragraph.png' style={{ marginTop: '2em' }} />
-                <Image src='./images/paragraph.png' style={{ marginTop: '2em' }} />
-                <Image src='./images/paragraph.png' style={{ marginTop: '2em' }} /> */}
-                {this.props.books.length &&
+                {this.props.statusBooks.books.length &&
                     <Card.Group itemsPerRow={3}>
-                        {this.props.books.map(book => {
+                        {this.props.statusBooks.books.map(book => {
                             return (
-                                <Card key={book.id} onClick={() => this.bookHandler(book.book)}>
+                                <Card key={book.id} onClick={(() => this.bookHandler(book.book))}>
                                     <Image src={book.location} />
                                     <Card.Content className='nameOverflow'>
-                                        <span /* style={{'fontSize':fontSize}} */>{book.book}</span>
+                                        <span>{book.book}</span>
                                     </Card.Content>
                                 </Card>
                             )
                         })}
                     </Card.Group>
                 }
-                {/* this.props.books.map(book => (
-                    <Card id={book.id}>
-                        <Image src={book.location} />
-                        <Card.Content>
-                            <Card.Header>{book.book}</Card.Header>
-                            <Card.Meta>
-                                <span className='date'>Joined in 2015</span>
-                                </Card.Meta>
-                                <Card.Description>Matthew is a musician living in Nashville.</Card.Description>
-                        </Card.Content>
-                        <Card.Content extra>
-                            <a>
-                                <Icon name='user' />
-                                22 Friends
-                            </a>
-                        </Card.Content>
-                    </Card>
-                )) */}
             </Container>
         );
     }
 }
 
 const mapStateToPros = state => ({
-    "books": state.books
+    "statusBooks": state.books
 })
 
-export default connect(mapStateToPros, {fetchBooks})(Books);
+export default connect(mapStateToPros, {fetchBooks, activeBook})(Books);

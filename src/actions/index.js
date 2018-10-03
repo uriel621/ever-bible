@@ -1,1 +1,1 @@
-export {fetchBooks} from './booksAction';
+export {fetchBooks, activeBook} from './booksAction';
