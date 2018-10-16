@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import {
     Container,
     Dropdown,
@@ -9,11 +10,11 @@ import {
 const Navbar = () => (
     <Menu fixed='top' inverted>
         <Container>
-            <Menu.Item as='a' header>
+            <Menu.Item as='span' header>
             <Image size='mini' src='./images/logo.png' style={{ marginRight: '1.5em' }} />
-            Evers Bible
+            <Link to="/">Evers Bible</Link>
             </Menu.Item>
-            <Menu.Item as='a'>Home</Menu.Item>
+            <Menu.Item as='span'><Link to="/">Home</Link></Menu.Item>
 
             <Dropdown item simple text='Dropdown'>
             <Dropdown.Menu>

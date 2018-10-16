@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {fetchBooks, activeBook} from '../../actions/index';
+
 import './books.css';
 import {
     Card,
@@ -16,14 +17,13 @@ class Books extends Component {
         this.bookHandler = this.bookHandler.bind(this);
     }
     componentDidMount() {
+        this.props.activeBook('');
         this.props.fetchBooks();
     }
 
     bookHandler(book) {
-        // make action creator for active book
-        // mske react routers
-        console.log(book)
-        this.props.activeBook(book)
+        this.props.activeBook(book);
+        this.props.history.push(book);
     }
     
     render(){
@@ -34,7 +34,7 @@ class Books extends Component {
                     <Card.Group itemsPerRow={3}>
                         {this.props.statusBooks.books.map(book => {
                             return (
-                                <Card key={book.id} onClick={(() => this.bookHandler(book.book))}>
+                                <Card key={book.id} onClick={(() => this.bookHandler(book.book))} >
                                     <Image src={book.location} />
                                     <Card.Content className='nameOverflow'>
                                         <span>{book.book}</span>
@@ -49,8 +49,8 @@ class Books extends Component {
     }
 }
 
-const mapStateToPros = state => ({
+const mapStateToProps = state => ({
     "statusBooks": state.books
 })
 
-export default connect(mapStateToPros, {fetchBooks, activeBook})(Books);
+export default connect(mapStateToProps, {fetchBooks, activeBook})(Books);
