@@ -20,6 +20,7 @@ class Chapters extends Component {
     }
 
     render(){
+        window.scrollTo(0, 0);
         return (
             <Container text style={{ marginTop: '7em' }}>
                 <Breadcrumbs activeBook={this.props.match.params.id}/>
