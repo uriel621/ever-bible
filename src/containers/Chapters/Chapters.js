@@ -19,6 +19,22 @@ class Chapters extends Component {
         console.log('@Chapters');
     }
 
+    icons(chapters) {
+        let card = [];
+        for(let i = 1; i <= chapters; i++) {
+            card.push(
+                <Card centered={true} key={i} >
+                    {/* <Image src={book.location} /> */}
+                    <Card.Content className='nameOverflow'>
+                        <span>{i}</span>
+                    </Card.Content>
+                </Card>
+            )
+        }
+        console.log(card);
+        return card
+    }
+
     render(){
         window.scrollTo(0, 0);
         return (
@@ -26,6 +42,19 @@ class Chapters extends Component {
                 <Breadcrumbs activeBook={this.props.match.params.id}/>
                 <Divider />
                 This book has {this.props.numberOfChapters} chapters
+                <Card.Group itemsPerRow={3}>
+                    {
+                        this.icons(this.props.numberOfChapters)
+                    }
+                    {/* {this.props.statusBooks.books.map((book, index) => (
+                        <Card as="div" key={book.id} onClick={(() => this.bookHandler(book.book))} >
+                            <Image src={book.location} />
+                            <Card.Content className='nameOverflow'>
+                                <span>{book.book}</span>
+                            </Card.Content>
+                        </Card>
+                    ))} */}
+                </Card.Group>
             </Container>
         );
     }
