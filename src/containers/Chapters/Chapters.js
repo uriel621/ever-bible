@@ -10,7 +10,7 @@ import {
     Image,
     Icon,
 } from 'semantic-ui-react'
-import { Divider } from 'semantic-ui-react'
+import { Divider } from 'semantic-ui-react';
 
 class Chapters extends Component {
     componentDidMount() {
@@ -23,15 +23,13 @@ class Chapters extends Component {
         let card = [];
         for(let i = 1; i <= chapters; i++) {
             card.push(
-                <Card centered={true} key={i} >
-                    {/* <Image src={book.location} /> */}
-                    <Card.Content className='nameOverflow'>
+                <Card key={i} onClick={() => console.log(i)}>
+                    <Card.Content textAlign="center" className='nameOverflow'>
                         <span>{i}</span>
                     </Card.Content>
                 </Card>
             )
         }
-        console.log(card);
         return card
     }
 
@@ -41,19 +39,10 @@ class Chapters extends Component {
             <Container text style={{ marginTop: '7em' }}>
                 <Breadcrumbs activeBook={this.props.match.params.id}/>
                 <Divider />
-                This book has {this.props.numberOfChapters} chapters
                 <Card.Group itemsPerRow={3}>
                     {
                         this.icons(this.props.numberOfChapters)
                     }
-                    {/* {this.props.statusBooks.books.map((book, index) => (
-                        <Card as="div" key={book.id} onClick={(() => this.bookHandler(book.book))} >
-                            <Image src={book.location} />
-                            <Card.Content className='nameOverflow'>
-                                <span>{book.book}</span>
-                            </Card.Content>
-                        </Card>
-                    ))} */}
                 </Card.Group>
             </Container>
         );
