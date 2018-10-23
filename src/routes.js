@@ -5,6 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Books from './containers/Books/Books';
 import Chapters from './containers/Chapters/Chapters';
+import Verses from './containers/Verses/Verses';
 
 class Routes extends Component {
   render() {
@@ -13,7 +14,8 @@ class Routes extends Component {
         <Navbar />
             <Switch>
                 <Route exact path='/' component={ Books }/>
-                <Route exact path='/:id' component={ Chapters }/>
+                <Route exact path='/:book' component={ Chapters }/>
+                <Route path="/:book/:verse" component={Verses}/>
             </Switch>
         <Footer />
       </div>
