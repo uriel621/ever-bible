@@ -15,7 +15,7 @@ class Routes extends Component {
             <Switch>
                 <Route exact path='/' component={ Books }/>
                 <Route exact path='/:book' component={ Chapters }/>
-                <Route path="/:book/:verse" component={Verses}/>
+                <Route path="/:book/:chapter" component={Verses}/>
             </Switch>
         <Footer />
       </div>

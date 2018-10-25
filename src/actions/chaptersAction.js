@@ -1,17 +1,14 @@
+import axios from 'axios';
 import { FETCH_CHAPTERS, ACTIVE_CHAPTER } from './types';
 
 export const fetchChapters = (chapter) => dispatch => {
-    console.log(`http://127.0.0.1:5000/chapter/${chapter}`);
-    fetch(`http://127.0.0.1:5000/chapter/${chapter}`)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(chapters) {
+    axios.get(`http://api.eversbible.com/chapter/${chapter}`)
+        .then(function (chapters) {
             dispatch({
                 "type": FETCH_CHAPTERS,
-                "payload": chapters
+                "payload": chapters.data
             })
-        });
+        })
 }
 
 export const activeChapter = (chapter) => dispatch => {

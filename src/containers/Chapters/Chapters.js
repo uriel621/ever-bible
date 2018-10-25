@@ -15,6 +15,7 @@ import { Divider } from 'semantic-ui-react';
 class Chapters extends Component {
     componentDidMount() {
         this.props.activeBook(this.props.match.params.book);
+        // chapterList
         this.props.fetchChapters(this.props.match.params.book);
         console.log('@Chapters');
     }
@@ -23,7 +24,7 @@ class Chapters extends Component {
         let card = [];
         for(let i = 1; i <= chapters; i++) {
             card.push(
-                <Card key={i} onClick={() => this.props.history.push(`${this.props.match.params.book}/1`)}>
+                <Card key={i} onClick={() => this.props.history.push(`${this.props.match.params.book}/${i}`)}>
                     <Card.Content textAlign="center" className='nameOverflow'>
                         <span>{i}</span>
                     </Card.Content>
@@ -37,7 +38,7 @@ class Chapters extends Component {
         window.scrollTo(0, 0);
         return (
             <Container text style={{ marginTop: '7em' }}>
-                <Breadcrumbs activeBook={this.props.match.params.id}/>
+                <Breadcrumbs activeBook={this.props.match.params.book}/>
                 <Divider />
                 <Card.Group itemsPerRow={3}>
                     {

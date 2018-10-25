@@ -7,7 +7,15 @@ const BreadcrumbExampleBigSize = (props) => (
   <Breadcrumb size='large'>
     <Breadcrumb.Section><Link to="/">Books</Link></Breadcrumb.Section>
     <Breadcrumb.Divider icon='right chevron' />
-    <Breadcrumb.Section active>{props.activeBook}</Breadcrumb.Section>
+    <Breadcrumb.Section><Link to={`/${props.activeBook}`}>{props.activeBook}</Link></Breadcrumb.Section>
+    {
+      props.activeChapter && 
+      <Breadcrumb.Divider icon='right chevron' />
+    }
+    {
+      props.activeChapter && 
+      <Breadcrumb.Section active>{props.activeChapter}</Breadcrumb.Section>
+    }
   </Breadcrumb>
 )
 
