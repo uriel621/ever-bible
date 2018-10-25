@@ -2,7 +2,7 @@ import axios from 'axios';
 import { FETCH_BOOKS, ACTIVE_BOOK } from './types';
 
 export const fetchBooks = () => dispatch => {
-    axios.get('http://api.eversbible.com/')
+    axios.get('https://api.eversbible.com/')
         .then(function (books) {
             dispatch({
                 "type": FETCH_BOOKS,

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { _FETCH_CHAPTER, _ACTIVE_CHAPTER } from './types';
 
 export const fetchChapter = (book, chapter) => dispatch => {
-    axios.get(`http://api.eversbible.com//book/${book}/chapter/${chapter}`)
+    axios.get(`https://api.eversbible.com//book/${book}/chapter/${chapter}`)
         .then(function (chapter) {
             const verses = [];
             for (let verse in chapter.data) {
